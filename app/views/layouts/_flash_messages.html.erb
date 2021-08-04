@@ -1,0 +1,17 @@
+<div class="text-center" role="alert">
+  <% if flash[ :success ] %>
+    <div class="alert alert-success fade show mb-0" role="alert">
+      <%= flash[ :success ] %>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-danger fade show mb-0" role="alert">
+      <%= alert %>
+    </div>
+  <% end %>
+  <% if notice %>
+    <div class="alert alert-success fade show mb-0" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+</div>
