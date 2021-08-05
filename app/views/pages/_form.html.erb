@@ -1,0 +1,62 @@
+<%= form_with(model: page) do |form| %>
+  <% if page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+        <% page.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_homepage %>
+    <%= form.check_box :is_homepage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_dashboard %>
+    <%= form.check_box :is_dashboard %>
+  </div>
+
+  <div class="field">
+    <%= form.label :requires_authentication %>
+    <%= form.check_box :requires_authentication %>
+  </div>
+
+  <div class="field">
+    <%= form.label :header_html %>
+    <%= form.text_area :header_html %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_in_nav %>
+    <%= form.check_box :is_in_nav %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body_html %>
+    <%= form.text_area :body_html %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

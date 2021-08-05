@@ -4,4 +4,10 @@ Rails.application.routes.draw do
 
   root to: 'common_pages#home'
   get '/pricing', to: 'common_pages#pricing'
+  get '/dashboard', to: 'common_pages#dashboard'
+
+  scope :admin do
+    get '/users', to: 'admin_users#index'
+    resources :pages
+  end
 end
