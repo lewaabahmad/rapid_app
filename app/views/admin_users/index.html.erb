@@ -32,7 +32,11 @@
                   </p>
                 </td>
                 <td>
-                  <%= user.admin %>
+                  <% if user.admin %>
+                    <span class='badge bg-primary'>YES</span>
+                  <% else %>
+                    <span class='badge bg-danger'>NO</span>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
@@ -45,14 +49,16 @@
 
 <script>
   
-  if ( !document.querySelector( '#users-table_wrapper' ) ) {
-    var usersTable = $('#users-table').DataTable({ 
-      pageLength: 25,
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'csv', 'excel', 'pdf'
-      ]
-    });
-  }
+  document.addEventListener("turbolinks:load", function() {
+    if ( !document.querySelector( '#users-table_wrapper' ) ) {
+      var usersTable = $('#users-table').DataTable({ 
+        pageLength: 25,
+        dom: 'Bfrtip',
+        buttons: [
+          'copy', 'csv', 'excel', 'pdf'
+        ]
+      });
+    }
+  })
 
 </script>

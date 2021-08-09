@@ -3,7 +3,9 @@ class PagesController < ApplicationController
 
   # GET /pages or /pages.json
   def index
-    @pages = Page.all
+    @homepage = Page.homepage
+    @dashboard = Page.dashboard
+    @pages = Page.all.where(is_dashboard: false, is_homepage: false)
   end
 
   # GET /pages/1 or /pages/1.json

@@ -1,43 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="px-4 pt-5 mt-5 text-center">
+  <h1 class="display-5 fw-bold">Your App Pages</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">This is a list of all of the pages your App has. Manage them below.</p>
+    <%= link_to 'New Page', new_page_path, class: 'btn btn-outline-primary btn-lg' %>
+  </div>
+</div>
 
-<h1>Pages</h1>
+<div class="container px-4 py-5" id="featured-3">
+  <div class="row pb-4">
+    <div class="col-12">
+      <h4 class='border-bottom mb-2'>Public Pages:</h4>
+    </div>
+    <div class="col-12">
+      <%= link_to edit_page_path(@homepage) do %>
+        <div class="card rounded p-3 bg-primary">
+          <h2 class='text-white'><%= @homepage.title %></h2>
+          <p class='text-white'><%= @homepage.description %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-12 text-right">
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Is homepage</th>
-      <th>Is dashboard</th>
-      <th>Requires authentication</th>
-      <th>Header html</th>
-      <th>Is in nav</th>
-      <th>Body html</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pages.each do |page| %>
-      <tr>
-        <td><%= page.title %></td>
-        <td><%= page.description %></td>
-        <td><%= page.is_homepage %></td>
-        <td><%= page.is_dashboard %></td>
-        <td><%= page.requires_authentication %></td>
-        <td><%= page.header_html %></td>
-        <td><%= page.is_in_nav %></td>
-        <td><%= page.body_html %></td>
-        <td><%= page.url %></td>
-        <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Page', new_page_path %>
+  <div class="row pb-4">
+    <div class="col-12">
+      <h4 class='border-bottom mb-2'>Pages that require Authentication:</h4>
+    </div>
+    <div class="col-12">
+      <%= link_to edit_page_path(@dashboard) do %>
+        <div class="card rounded p-3 bg-success">
+          <h2 class='text-white'><%= @dashboard.title %></h2>
+          <p class='text-white'><%= @dashboard.description %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

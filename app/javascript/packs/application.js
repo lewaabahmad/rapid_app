@@ -11,9 +11,12 @@ import "channels"
 import 'jquery'
 import 'popper.js'
 import 'bootstrap'
+import 'codemirror'
 
 import 'css/site'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("codemirror")

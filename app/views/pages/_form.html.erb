@@ -1,62 +1,72 @@
-<%= form_with(model: page) do |form| %>
-  <% if page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+<div class="container px-4 py-5" id="featured-3">
+  <div class="row pb-4">
+    <div class="col-12">
+      <%= form_with(model: page) do |form| %>
+        <% if page.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
 
-      <ul>
-        <% page.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <ul>
+              <% page.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="row pb-2">
+          <div class="col-12 col-md-6">
+            <div class="field py-2">
+              <%= form.label :title %>
+              <%= form.text_field :title, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="field py-2">
+              <%= form.label :url %>
+              <%= form.text_field :url, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="field py-2">
+              <%= form.label :description %>
+              <%= form.text_area :description, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row pb-2">
+          <div class="col-12 col-md-6">
+            <div class="form-check form-switch pt-2">
+              <%= form.check_box :requires_authentication, class: "form-check-input" %>
+              <%= form.label :requires_authentication, 'Does this Page Require Authentication?', class: "form-check-label" %>
+              <div class="form-text">
+                This determines whether or not your User needs to be Signed Up/In to see this page
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-check form-switch pt-2">
+              <%= form.check_box :is_in_nav, class: "form-check-input" %>
+              <%= form.label :is_in_nav, 'Add link to Page in Header Navigation?', class: "form-check-label" %>
+              <div class="form-text">
+                Do you want this link to be present in the top nav? We do no recommend having more than 5 pages linked. 
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field pb-2">
+          <%= form.label :body_html, 'HTML' %>
+          <%= form.text_area :body_html, id: 'code-area' %>
+        </div>
+
+        <div class="actions text-center py-3">
+          <%= form.submit 'Save', class: 'btn btn-primary btn-lg px-5' %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_homepage %>
-    <%= form.check_box :is_homepage %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_dashboard %>
-    <%= form.check_box :is_dashboard %>
-  </div>
-
-  <div class="field">
-    <%= form.label :requires_authentication %>
-    <%= form.check_box :requires_authentication %>
-  </div>
-
-  <div class="field">
-    <%= form.label :header_html %>
-    <%= form.text_area :header_html %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_in_nav %>
-    <%= form.check_box :is_in_nav %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body_html %>
-    <%= form.text_area :body_html %>
-  </div>
-
-  <div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
