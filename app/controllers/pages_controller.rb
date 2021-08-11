@@ -1,15 +1,21 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy ]
+  before_action :set_page, only: %i[edit update destroy]
+  before_action :authenticate_admin!, except: %i[show]
 
   # GET /pages or /pages.json
   def index
     @homepage = Page.homepage
     @dashboard = Page.dashboard
-    @pages = Page.all.where(is_dashboard: false, is_homepage: false)
+    pages = Page.all.where(is_dashboard: false, is_homepage: false)
+    @public_pages = pages.where(requires_authentication: false)
+    @private_pages = pages.where(requires_authentication: true)
   end
 
   # GET /pages/1 or /pages/1.json
   def show
+    @page = Page.find_by(url: params[:url])
+    not_found unless @page
+    authenticate_user! if @page.requires_authentication?
   end
 
   # GET /pages/new

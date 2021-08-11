@@ -11,29 +11,47 @@
     <div class="col-12">
       <h4 class='border-bottom mb-2'>Public Pages:</h4>
     </div>
-    <div class="col-12">
+    <div class="col-12 py-3">
       <%= link_to edit_page_path(@homepage) do %>
-        <div class="card rounded p-3 bg-primary">
+        <div class="card rounded p-3 bg-primary bg-gradient">
           <h2 class='text-white'><%= @homepage.title %></h2>
           <p class='text-white'><%= @homepage.description %></p>
         </div>
       <% end %>
     </div>
-    <div class="col-12 text-right">
-    </div>
+    <% @public_pages.each do |page| %>
+      <div class="col-12 py-3">
+        <%= link_to edit_page_path(page) do %>
+          <div class="card rounded p-3 bg-primary bg-gradient" style="opacity: .8;">
+            <h2 class='text-white'><%= page.title %></h2>
+            <p class='text-white'><%= page.description %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="row pb-4">
     <div class="col-12">
       <h4 class='border-bottom mb-2'>Pages that require Authentication:</h4>
     </div>
-    <div class="col-12">
+    <div class="col-12 py-3">
       <%= link_to edit_page_path(@dashboard) do %>
-        <div class="card rounded p-3 bg-success">
+        <div class="card rounded p-3 bg-success bg-gradient">
           <h2 class='text-white'><%= @dashboard.title %></h2>
           <p class='text-white'><%= @dashboard.description %></p>
         </div>
       <% end %>
     </div>
+    <% @private_pages.each do |page| %>
+      <div class="col-12 py-3">
+        <%= link_to edit_page_path(page) do %>
+          <div class="card rounded p-3 bg-success bg-gradient" style="opacity: .8;">
+            <h2 class='text-white'><%= page.title %></h2>
+            <p class='text-white'><%= page.description %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

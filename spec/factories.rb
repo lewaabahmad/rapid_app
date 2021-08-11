@@ -7,7 +7,7 @@ FactoryBot.define do
     requires_authentication { false }
     header_html { "MyText" }
     is_in_nav { false }
-    body_html { "MyText" }
+    body_html { "MyBody" }
     url { "MyString" }
   end
 

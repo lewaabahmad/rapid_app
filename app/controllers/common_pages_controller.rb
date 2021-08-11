@@ -1,9 +1,7 @@
 class CommonPagesController < ApplicationController
 
-  def home
-  end
-
-  def pricing
+  def homepage
+    @page = Page.homepage
   end
 
   def dashboard

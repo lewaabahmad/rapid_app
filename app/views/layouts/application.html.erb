@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OneClick</title>
+    <title>Rapid App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,14 +16,13 @@
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-4">LOGO HERE</span>
+          <span class="fs-4">Rapid App</span>
         </a>
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="/#features" class="nav-link">Features</a></li>
-          <li class="nav-item"><a href="/pricing" class="nav-link">Pricing</a></li>
-          <li class="nav-item"><a href="#faqs" class="nav-link">FAQs</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <% @nav_pages.each do |nav_page| %>
+            <li class="nav-item"><a href="<%= nav_page.url %>" class="nav-link"><%= nav_page.title %></a></li>
+          <% end %>
           <% if current_user %>
             <li class="border-start nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>
             <li class="nav-item"><a href=<%= destroy_user_session_path %> data-method="delete" class="nav-link">Sign Out</a></li>
