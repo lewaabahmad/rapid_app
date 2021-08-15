@@ -25,7 +25,10 @@
           <div class="col-12 col-md-6">
             <div class="field py-2">
               <%= form.label :url %>
-              <%= form.text_field :url, class: 'form-control' %>
+              <div class="input-group">
+                <span class="input-group-text">/</span>
+                <%= form.text_field :url, class: 'form-control', disabled: page.is_homepage? || page.is_dashboard? %>
+              </div>
             </div>
           </div>
 
